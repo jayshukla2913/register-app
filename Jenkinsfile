@@ -43,7 +43,9 @@ pipeline {
            steps {
 	           script {
 		        withSonarQubeEnv(credentialsId: 'jenkins-sonarqube-token') { 
-                        sh "mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar \
+                        sh "
+                            mvn clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar \
+                            mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar \
                             -Dsonar.projectKey= maven-project"
 		        }
 	           }	
